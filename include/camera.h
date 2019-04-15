@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "ray.h"
+#include "primitive_list.h"
 
 using namespace std;
 typedef vec3 Color;
@@ -24,7 +25,7 @@ public:
 
 	Color fadeBG(const ray&);
 
-	Color sample(const ray&);
+	Color sample(const ray&, Primitive_list *world);
 
 	ray perspectiveRay(float, float);
 

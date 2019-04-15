@@ -1,7 +1,11 @@
 #include <iostream>
 #include "ray.h"
 #include "camera.h"
+#include "primitive_list.h"
 #include "surfaceInteraction.h"
+
+#define MINSIGHT 0
+#define MAXSIGHT 100000
 
 using namespace std;
 typedef vec3 Color;
@@ -42,8 +46,8 @@ Color Camera::fadeBG(const ray& r){
 }
 
 
-Color Camera::sample(const ray& r){
-	if(hit_sphere(vec3(0,0,-1),0.5,r)){
+Color Camera::sample(const ray& r, Primitive_list *world){
+	if(world->intersect_p(r,MINSIGHT,MAXSIGHT)){
 		return vec3(1,0,0);
 	}
 

@@ -11,6 +11,8 @@ typedef vec3 Point;
 typedef vec3 Point2f;
 typedef ray Vector;
 
+class Primitive;
+
 
 class SurfaceInteraction {
 public:
