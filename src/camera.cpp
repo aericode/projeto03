@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ray.h"
 #include "camera.h"
+#include "surfaceInteraction.h"
 
 using namespace std;
 typedef vec3 Color;
