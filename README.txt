@@ -8,6 +8,12 @@ Representando respectivamente a coordenada do(a):
 	- A largura da tela onde serão projetados
 	- A altura da tela onde serão projetados
 	- O canto inferior esquerdo da tela onde serão projetados
+     Cada valor deve sempre ser escrito com um '.' para representar a casa decimal, mesmo que o valor não tenha parte decimal. (ex: 1 deve ser escrito como 1.0 ).
+
+Um array chamado "primitives" com arrays contendo respectivamente o x,y,z,raio de esferas a serem adicionadas na cena. O raio deve sempre ser escrito com um '.' para representar a casa decimal, mesmo que o valor não tenha parte decimal. (ex: 1 deve ser escrito como 1.0 ).
+
+
+Exemplo:
 
 {
     "camera":{
@@ -16,6 +22,14 @@ Representando respectivamente a coordenada do(a):
         "vertical":[0.0,2.0,0.0],
         "corner":[-2.0,-1.0,-1.0]
     }
+
+    "primitives":[
+        [ 0, 0,-1, 0.5],
+        [ 1, 0,-1, 0.5],
+        [-1, 0,-1, 0.5],
+        [ 0, 1,-1, 0.5],
+        [ 0,-1,-1, 0.5]
+    ]
 }
 
 
