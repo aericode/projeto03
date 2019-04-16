@@ -8,12 +8,16 @@
 
 #include "vec3.h"
 #include "camera.h"
+#include "sphere.h"
+#include "primitive.h"
+#include "primitive_list.h"
 
 
 using json::JSON;
 using namespace std;
 
 typedef vec3 Color;
+typedef vec3 Point;
 
 string stringFromFile(string filename)
 {
@@ -53,5 +57,38 @@ Camera cameraFromJSON(JSON obj){
         }
 
         return Camera(aux[0],aux[1],aux[2],aux[3]);
+    }
+}
+
+Primitive_list * primitivesFromJSON(JSON obj){
+    if (obj["primitives"].IsNull()){
+        std::cout<<"no instructions for primitives in JSON file"<<std::endl;
+        return nullptr;
+    }else{
+
+
+        int num_primitives = obj["primitives"].length();
+
+
+        Primitive **list = new  Primitive*[num_primitives];
+
+        Point aux;
+        float radius;
+
+
+        for(int i =0; i < num_primitives; i++){
+
+            aux[0] = obj["primitives"][i][0].ToInt();
+            aux[1] = obj["primitives"][i][1].ToInt();
+            aux[2] = obj["primitives"][i][2].ToInt();
+
+            radius = obj["primitives"][i][3].ToFloat();
+
+            list[i] = new Sphere(aux, radius);
+        }
+        
+        Primitive_list * result = new Primitive_list(list, num_primitives);
+
+        return result;
     }
 }

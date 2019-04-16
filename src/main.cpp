@@ -7,6 +7,7 @@
 #include "ray.h"
 #include "sphere.h"
 #include "plotter.h"
+#include "primitive_list.h"
 
 
 
@@ -18,6 +19,7 @@ int main(){
 
 	JSON obj = parseFile("./jsonInput/scene.json");
 	Camera cam = cameraFromJSON(obj);
+	Primitive_list *world = primitivesFromJSON(obj);
 
 
 	int nx = 200;
@@ -25,14 +27,6 @@ int main(){
 
 	Plotter perspective(nx,ny,"./imageOutput/perspective.ppm");
 
-	Primitive *list[5];
-	list[0] = new Sphere(Point(1,0,-1), 0.5);
-	list[1] = new Sphere(Point(0,0,-1), 0.5);
-	list[2] = new Sphere(Point(-1,0,-1), 0.5);
-	list[3] = new Sphere(Point(0,1,-1), 0.5);
-	list[4] = new Sphere(Point(0,-1,-1), 0.5);
-
-	Primitive_list *world = new Primitive_list(list,5); 
 
 	for (int j = ny-1; j >= 0 ; j--){
 		for(int i = 0; i <  nx; i++){

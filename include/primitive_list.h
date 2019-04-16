@@ -1,6 +1,7 @@
 #ifndef PRIMITIVELISTH
 #define PRIMITIVELISTH
 
+#include <iostream>
 #include "primitive.h"
 
 
